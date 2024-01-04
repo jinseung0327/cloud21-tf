@@ -16,7 +16,7 @@ resource "aws_subnet" "wsi-public-b" {
   map_public_ip_on_launch = true
 
   tags = {
-    Name = "skills-subnet-public-c"
+    Name = "wsi-public-b"
   }
 }
 

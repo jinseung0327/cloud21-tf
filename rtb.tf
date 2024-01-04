@@ -33,7 +33,7 @@ resource "aws_route_table" "wsi-private-b-rt" {
   }
 
   tags = {
-    Name = "wsi-private-b"
+    Name = "wsi-private-b-rt"
   }
 }
 
