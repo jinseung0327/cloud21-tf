@@ -37,6 +37,13 @@ resource "aws_route_table" "wsi-private-b-rt" {
   }
 }
 
+resource "aws_route_table" "wsi-data-rt" {
+  vpc_id = aws_vpc.wsi-vpc.id
+  tags = {
+    Name = "wsi-data-rt"
+  }
+}
+
 resource "aws_route_table_association" "wsi-public-rt-association-a" {
   subnet_id      = aws_subnet.wsi-public-a.id
   route_table_id = aws_route_table.wsi-public-rt.id
@@ -55,4 +62,14 @@ resource "aws_route_table_association" "wsi-private-a-rt-association" {
 resource "aws_route_table_association" "wsi-private-b-rt-association" {
   subnet_id      = aws_subnet.wsi-private-b.id
   route_table_id = aws_route_table.wsi-private-b-rt.id
+}
+
+resource "aws_route_table_association" "wsi-private-protected-a" {
+  subnet_id      = aws_subnet.wsi-private-protected-a.id
+  route_table_id = aws_route_table.wsi-data-rt.id
+}
+
+resource "aws_route_table_association" "wsi-private-protected-b" {
+  subnet_id      = aws_subnet.wsi-private-protected-b.id
+  route_table_id = aws_route_table.wsi-data-rt.id
 }
